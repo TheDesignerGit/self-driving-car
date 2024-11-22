@@ -11,10 +11,16 @@ class Car {
         this.friction = 0.05
         this.angle = 0
 
+        this.sensor = new Sensor(this)
         this.controls = new Controls()
     }
 
     update(){
+        this.#move()
+        this.sensor.update()
+    }
+
+    #move() {
         // ..: forward and reverse
         if(this.controls.forward) this.speed+=this.acceleration         // gradually accelate the car
         if(this.controls.reverse) this.speed-=this.acceleration
@@ -55,5 +61,7 @@ class Car {
         ctx.fill()
 
         ctx.restore()
+
+        this.sensor.draw(ctx)           // draw the sensors
     }
 }
