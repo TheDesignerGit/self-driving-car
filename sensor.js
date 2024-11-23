@@ -21,7 +21,7 @@ class Sensor {
     }
 
     #getReading(ray, roadBorders) {
-        let touches = []
+        let touches = []            // variable to save all the contacts
 
         for(let i=0; i<roadBorders.length; i++){
             const touch = getIntersection(

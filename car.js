@@ -14,7 +14,7 @@ class Car {
 
         // this.polygon = null             // 
 
-        this.sensor = new Sensor(this)
+        this.sensor = new Sensor(this)          // pass the car object into the sensor
         this.controls = new Controls()
     }
 
@@ -27,12 +27,13 @@ class Car {
 
     #assessDamage(roadBorders) {
         for(let i=0; i<roadBorders.length; i++) {
-            if(polysIntersect(this.polygon, roadBorders[i])) true
+            // is there an intersection between the car and the border
+            if(polysIntersect(this.polygon, roadBorders[i])) {return true}
         }
         return false
     }
 
-    // helper for detecting collisions
+    // new way to draw the car (using polygon instead of rectangle)
     #createPolygon(){
         const points = []
         const rad = Math.hypot(this.w, this.h)/2
@@ -81,6 +82,9 @@ class Car {
     }
 
     draw(ctx){
+        if(this.damaged) ctx.fillStyle='gray'
+        else ctx.fillStyle='black'
+
         // rotate the car - left/right steering
         // ctx.save()
         // ctx.translate(this.x, this.y)
@@ -98,13 +102,10 @@ class Car {
 
         // ctx.restore()
 
-        if(this.damaged) ctx.fillStyle='gray'
-        else ctx.fillStyle='black'
-
         // .:. new way to draw car
         ctx.beginPath()
         ctx.moveTo(this.polygon[0].x, this.polygon[0].y)
-        for(let i=0; i<this.polygon.length; i++){
+        for(let i=1; i<this.polygon.length; i++){
             ctx.lineTo(this.polygon[i].x, this.polygon[i].y)
         }
         ctx.fill()

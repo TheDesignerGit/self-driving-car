@@ -13,7 +13,7 @@ function animate () {
     canvas.height = window.innerHeight          // allow browser window changes to update the canvas size
 
     ctx.save()
-    ctx.translate(0, -car.y+canvas.height*0.7)    // camera follows car
+    ctx.translate(0, -car.y+canvas.height*0.7)    // 'camera' follows car over Y-axis
     road.draw(ctx)
     car.draw(ctx)               // note: car will be an object with a 'draw' method that will take in 'ctx'
 

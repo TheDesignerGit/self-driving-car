@@ -3,8 +3,8 @@ function lerp(A,B,t){
 }
 
 function getIntersection(A,B,C,D) {
-    const tTop = (D.x-C.x)*(A.y-C.y)-(A.x-C.x)*(D.y-C.y)
-    const uTop = (A.x-B.x)*(C.y-A.y)-(C.x-A.x)*(A.y-B.y)
+    const tTop = (D.x-C.x)*(A.y-C.y)-(D.y-C.y)*(A.x-C.x)
+    const uTop = (C.y-A.y)*(A.x-B.x)-(C.x-A.x)*(A.y-B.y)
     const bottom = (D.y-C.y)*(B.x-A.x)-(D.x-C.x)*(B.y-A.y)
 
     if(bottom != 0) {
@@ -22,7 +22,6 @@ function getIntersection(A,B,C,D) {
     return null
 }
 
-
 function polysIntersect(poly1, poly2) {
     for(let i=0; i<poly1.length; i++){
         for (let j=0; j<poly2.length; j++) {
@@ -32,7 +31,7 @@ function polysIntersect(poly1, poly2) {
                 poly2[j],
                 poly2[(j+1) % poly2.length]
             )
-            if(touch) true
+            if(touch) {return true}
         }
     }
     return false
