@@ -22,9 +22,9 @@ function animate () {
     ctx.translate(0, -car.y+canvas.height*0.7)    // 'camera' follows car over Y-axis
     road.draw(ctx)
     for(let i=0; i<traffic.length; i++){
-        traffic[i].draw(ctx)
+        traffic[i].draw(ctx, "red")
     }
-    car.draw(ctx)               // note: car will be an object with a 'draw' method that will take in 'ctx'
+    car.draw(ctx, "blue")               // note: car will be an object with a 'draw' method that will take in 'ctx'
 
     ctx.restore()
     requestAnimationFrame(animate)          // run function repeatedly

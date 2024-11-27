@@ -91,9 +91,9 @@ class Car {
         // this.y -= this.speed                // update the speed vale
     }
 
-    draw(ctx){
+    draw(ctx, colour){
         if(this.damaged) ctx.fillStyle='gray'
-        else ctx.fillStyle='black'
+        else ctx.fillStyle= colour
 
         // rotate the car - left/right steering
         // ctx.save()
