@@ -19,7 +19,7 @@ class Car {
         if(controlType != "DUMMY"){
             this.sensor = new Sensor(this)          // pass the car object into the sensor
             this.brain = new NeuralNetwork(
-                [this.sensor.rayCount, 6, 4]
+                [this.sensor.rayCount, 6, 4]        // input, hidden layer neuron count, output
             )
         }
         this.controls = new Controls(controlType)
@@ -107,7 +107,7 @@ class Car {
         // this.y -= this.speed                // update the speed vale
     }
 
-    draw(ctx, colour){
+    draw(ctx, colour, drawSensor = false){
         if(this.damaged) ctx.fillStyle='gray'
         else ctx.fillStyle= colour
 
@@ -136,7 +136,7 @@ class Car {
         }
         ctx.fill()
 
-        if(this.sensor){
+        if(this.sensor && drawSensor){
             this.sensor.draw(ctx)           // draw the sensors
         }
     }
