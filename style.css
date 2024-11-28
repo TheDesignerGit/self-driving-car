@@ -2,7 +2,33 @@ body {
     margin: 0;
     background: darkgrey;
     overflow: hidden;
-    text-align: center;
+    /* text-align: center; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#verticalButtons {
+    display: flex;
+    flex-direction: column;
+}
+
+#verticalButtons > button {
+    border: none;
+    border-radius: 5px;
+    padding: 3px 5px 7px 5px;
+    margin: 2px;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+}
+#verticalButtons > button:hover {
+    background-color: cornflowerblue;
+}
+
+#verticalButtons > button:nth-child(2) {
+    font-size: 25px;
 }
 
 #carCanvas {
